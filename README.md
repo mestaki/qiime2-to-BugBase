@@ -49,12 +49,12 @@ To do this we’ll need the underlying biom table within the `table-cr-97 artifa
 
 This saves the exported biom table and calls it `feature-table.biom`.
 
-**When I try to validate the biom table here:
+<!--**When I try to validate the biom table here:
 `biom validate-table -i feature-table.biom`
 I get:
 "Unknown table type, however that is likely okay.
 The input file is not a valid BIOM-formatted file." 
-#Any idea why this is? If I convert it to json format this goes away. Not really an issue, just seemed odd to me**
+#Any idea why this is? If I convert it to json format this goes away. Not really an issue, just seemed odd to me**-->
 
 Right now, our biom table has OTU ID# and not taxonomic annotations. So we’ll go ahead and add those taxonomies in. For this we need the `97_otu_taxonomy.txt` file (use the same % identity used at your clustering step) that can be found in the Greegenes files we downloaded earlier within the `taxonomy` sub-folder.
 
