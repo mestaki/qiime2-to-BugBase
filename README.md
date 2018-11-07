@@ -82,4 +82,6 @@ This table is now compatible with BugBase. I tested this by uploading it on the 
 The image below was obtained using the web version of BugBase with all default settings and groups set to BodySite. It shows the predicted phenotypic trait (Aerobic) of the different body sites.
 
 
-![Aerobic|500x500](upload://tVm9jO3XlVIttk60iw0fVOQw3Yh.jpeg)
+![Aerobic|500x500](upload:
+        qiime2-to-BugBase/Aerobic.pdf
+      )
