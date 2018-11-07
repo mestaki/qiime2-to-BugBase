@@ -5,12 +5,12 @@ Here I outline my approach for use with 16S data, not shotgun metagenomic data. 
 
 Since BugBase requires as its input, an OTU table picked against the Greengenes database, I chose to cluster the DADA2-denoised reads from the Moving Pictures tutorial using `vsearch`.
 
-You can use dereplicated sequences without denoising but I personally believe it’s better to use denoised reads even if ultimately OTU picking methods will be used.
+You can use dereplicated sequences without denoising but I personally believe it’s better to utilise denoised reads even if OTU picking methods will ultimately be used.
 
 First though we’ll need some files, which I’ll put into one folder.
-Download the feature table and representative sequences which are the output of DADA2 from [Moving Pictures tutorial]( https://docs.qiime2.org/2018.8/tutorials/moving-pictures/#option-1-dada2).
+Download the feature table and representative sequences which are the output of DADA2 from the [Moving Pictures tutorial]( https://docs.qiime2.org/2018.8/tutorials/moving-pictures/#option-1-dada2).
 
-[rep-seqs-dada2.qza](https://docs.qiime2.org/2018.8/data/tutorials/moving-pictures/rep-seqs-dada2.qza)
+[rep-seqs-dada2.qza](https://docs.qiime2.org/2018.8/data/tutorials/moving-pictures/rep-seqs-dada2.qza)   
 [table-dada2.qza](https://docs.qiime2.org/2018.8/data/tutorials/moving-pictures/table-dada2.qza)
 
 Next, we’ll need the Greengenes reference database, which we can download from the [resource page]( https://docs.qiime2.org/2018.8/data-resources/#greengenes-16s-rrna). I downloaded the 13_5 version here.
@@ -40,7 +40,7 @@ Now I use vsearch to cluster the sequences at 97% similarity threshold.
 
 BugBase requires that the biom table be in version 1.0 JSON format, and have taxonomy annotations instead of OTU IDs, so we need to do some adjustments first.
 
-To do this we’ll need the underlying biom table within the table-cr-97 artifact.
+To do this we’ll need the underlying biom table within the `table-cr-97 artifact`.
 
     qiime tools export \
     --input-path table-cr-97.qza \
@@ -55,7 +55,7 @@ I get:
 The input file is not a valid BIOM-formatted file." 
 #Any idea why this is? If I convert it to json format this goes away. Not really an issue, just seemed odd to me**
 
-Right now, our biom table has OTU ID# and not taxonomic annotations. So we’ll go ahead and add those taxonomies in. For this we need the 97_otu_taxonomy.txt file (use the same % identity used at your clustering step) that can be found in the Greegenes files we downloaded earlier within the `taxonomy` sub-folder.
+Right now, our biom table has OTU ID# and not taxonomic annotations. So we’ll go ahead and add those taxonomies in. For this we need the `97_otu_taxonomy.txt` file (use the same % identity used at your clustering step) that can be found in the Greegenes files we downloaded earlier within the `taxonomy` sub-folder.
 
 In order to add taxonomy to our biom file first we need to add a new header to the `97_otu_taxonomy.txt` file.
 
