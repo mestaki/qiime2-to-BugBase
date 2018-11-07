@@ -15,7 +15,7 @@ Download the feature table and representative sequences which are the output of 
 
 Next, we’ll need the Greengenes reference database, which we can download from the [resource page]( https://docs.qiime2.org/2018.8/data-resources/#greengenes-16s-rrna). I downloaded the 13_5 version here.
 
-**#Q: Can BugBase use 13_8? Since the original PICRUSt version required 13_5?**
+#**Q: Can BugBase use 13_8? Since the original PICRUSt version required 13_5?**
 
 We’re going to need to import the 97% OTU fasta file (from the rep-set folder) into Qiime2. You could use a different % here if you want, ex. 99%.
 
