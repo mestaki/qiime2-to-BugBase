@@ -41,7 +41,7 @@ Now I use vsearch to cluster the sequences at 97% similarity threshold.
 
 BugBase requires that the biom table be in version 1.0 JSON format, and have taxonomy annotations instead of OTU IDs, so we need to do some adjustments first.
 
-To do this we’ll need the underlying biom table within the `table-cr-97 artifact`.
+To do this we’ll need the underlying biom table within the `table-cr-97.qza` artifact.
 
     qiime tools export \
     --input-path table-cr-97.qza \
