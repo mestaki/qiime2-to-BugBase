@@ -1,5 +1,5 @@
 # Aim #
-This is a simple workflow that aims to help others create a BugBase-compatible biom file from within Qiime2. The BugBase pre-print can be found [here]( https://www.biorxiv.org/content/early/2017/05/02/133462). For additional details see its [documentation page]( https://bugbase.cs.umn.edu/documentation.html). I was/am not involved with BugBase in any capacity, this is just a crude workaround that I found useful and thought others might benefit from.
+This is a simple workflow that aims to help create a BugBase-compatible biom file from within Qiime2. The BugBase pre-print can be found [here]( https://www.biorxiv.org/content/early/2017/05/02/133462). For additional details see its [documentation page]( https://bugbase.cs.umn.edu/documentation.html). As BugBase utilizes PICRUSt for its functional category predictions, the output table here is therefore also PICRUSt-compatiable. Note that there is a [PICRUSt2](https://github.com/picrust/picrust2/wiki) which users should consider if they are not looking to use BugBase. I was/am not involved with BugBase or PICRUSt in any capacity, this is just a crude workaround that I found useful and thought others might benefit from.
 
 Here I outline my approach for use with 16S data, not shotgun metagenomic data. I've tested this with Qiime2 version 2018.8.
 
