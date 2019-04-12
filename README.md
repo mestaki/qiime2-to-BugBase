@@ -61,7 +61,7 @@ Right now, our biom table has OTU ID# and not taxonomic annotations. So we’ll 
 In order to add taxonomy to our biom file first we need to add a new header to the `97_otu_taxonomy.txt` file. We need to add `#OTUID` and `taxonomy` to our first line.
 
 ```
-echo -e "#OTUID\ttaxonomy" | cat - 97_otu_taxonomy.txt.txt > 97_otu_taxonomy.txt
+echo -e "#OTUID\ttaxonomy" | cat - 97_otu_taxonomy.txt > 97_otu_taxonomy.txt
 ```
 Now we're ready to add our taxonomy.
 ```
