@@ -58,11 +58,12 @@ The input file is not a valid BIOM-formatted file."
 
 Right now, our biom table has OTU ID# and not taxonomic annotations. So we’ll go ahead and add those taxonomies in. For this we need the `97_otu_taxonomy.txt` file (use the same % identity used at your clustering step) that can be found in the Greegenes files we downloaded earlier within the `taxonomy` sub-folder.
 
-In order to add taxonomy to our biom file first we need to add a new header to the `97_otu_taxonomy.txt` file.
+In order to add taxonomy to our biom file first we need to add a new header to the `97_otu_taxonomy.txt` file. We need to add `#OTUID` and `taxonomy` to our first line.
 
-There are many ways to do this, but I simply opened the `97_otu_taxonomy.txt` file with excel and manually added `#OTUID`, and `taxonomy` headers by inserting them above the first row. Save.
-
-Now we're ready to add taxonomy.
+```
+echo -e "#OTUID\ttaxonomy" | cat - 97_otu_taxonomy.txt.txt > 97_otu_taxonomy.txt
+```
+Now we're ready to add our taxonomy.
 ```
 biom add-metadata -i feature-table.biom -o feature-table-tax.biom --observation-metadata-fp 97_otu_taxonomy.txt --sc-separated taxonomy
 ```
@@ -78,8 +79,12 @@ Then re-convert back to the older biom version we need.
 biom convert -i feature-table-tax.txt -o feature-table-tax-biom1.biom --table-type="OTU table" --to-json --process-obs-metadata taxonomy
 ```
 
-This table is now compatible with BugBase. I tested this by uploading it on the [web-based version of BugBase]( https://bugbase.cs.umn.edu/upload.html). Optionally you can upload a metadata file though a couple of minor adjustments also need to be made here for BugBase compatibility. The metadata table for this dataset can be downloaded [here]( https://data.qiime2.org/2018.8/tutorials/moving-pictures/sample_metadata.tsv). You will have to manually rename the first column to `sample-id` as per BugBase’s requirement, and also delete the second row which describes the column categories. Save this file as tab-delimited text file and you’re set to go.
-
+This table is now compatible with BugBase. I tested this by uploading it on the [web-based version of BugBase]( https://bugbase.cs.umn.edu/upload.html). Optionally you can upload a metadata file though a couple of minor adjustments also need to be made here for BugBase compatibility. The metadata table for this dataset can be downloaded [here]( https://data.qiime2.org/2018.8/tutorials/moving-pictures/sample_metadata.tsv). You will have to manually rename the first column to `sample-id` as per BugBase’s requirement, and also delete the second row which describes the column categories. Save this file as a `.txt` file and you’re set to go.
+This command will accomplish both these requirements by first deleting line 2 and then saving the file as .txt file.
+```
+sed '2d' metadata.tsv > metadata.txt
+```
+You can now run this through BugBase.
 The image below was obtained using the web version of BugBase with all default settings and groups set to BodySite. It shows the predicted phenotypic trait (Aerobic) of the different body sites.
 
 ![](Aerobic.jpg)
